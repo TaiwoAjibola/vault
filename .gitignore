@@ -1,0 +1,46 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# next
+.next/
+out/
+build/
+next-env.d.ts
+next-env.d.ts.timestamp
+
+# testing
+coverage/
+.tmp/
+test-results/
+playwright-report/
+
+# env
+.env
+.env.local
+.env.*.local
+extension/.env
+extension/dist/
+
+# OS
+.DS_Store
+*.pem
+
+# misc
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# supabase
+supabase/.branches
+supabase/.temp/
+
+# extension e2e build artifacts
+tests/e2e/.build/
+
+# agent tooling installed by the skills CLI
+.agents/
+skills-lock.json

@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --color-paper: #f1eee4;
+  --color-paper-deep: #e8e3d5;
+  --color-surface: #fbfaf5;
+  --color-surface-raised: #fffef9;
+  --color-ink: #14231b;
+  --color-ink-soft: #4c5a51;
+  --color-ink-faint: #758177;
+  --color-line: #dcd7c7;
+  --color-line-strong: #c6c0ad;
+  --color-accent: #c8f169;
+  --color-accent-strong: #a9db3f;
+  --color-accent-ink: #1b2b11;
+  --color-forest: #0e2a1f;
+  --color-forest-soft: #1d4233;
+  --color-sage: #dbe5d2;
+  --color-danger: #a8352b;
+  --color-danger-soft: #f6e4df;
+  --color-warning: #8a5a12;
+  --color-warning-soft: #f8eed8;
+
+  --radius-card: 1.25rem;
+  --radius-panel: 1.75rem;
+  --radius-input: 0.75rem;
+
+  --shadow-card: 0 1px 0 rgb(20 35 27 / 0.04), 0 18px 50px -30px rgb(20 35 27 / 0.25);
+  --shadow-float: 0 2px 0 rgb(20 35 27 / 0.05), 0 26px 80px -36px rgb(20 35 27 / 0.38);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html,
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" on, "cv11" on;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 3px;
+  }
+
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-feature-numeric {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .hairline {
+    background-image: linear-gradient(to right, transparent, var(--color-line-strong), transparent);
+  }
+
+  .vault-grid {
+    background-image:
+      linear-gradient(to right, rgb(20 35 27 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(20 35 27 / 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .keyhole-dots {
+    background-image: radial-gradient(rgb(20 35 27 / 0.11) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+@keyframes keyhold-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes keyhold-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes keyhold-scan {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(320%);
+  }
+}
+
+.animate-rise {
+  animation: keyhold-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-pulse-dot {
+  animation: keyhold-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-pulse-dot {
+    animation: none !important;
+  }
+}

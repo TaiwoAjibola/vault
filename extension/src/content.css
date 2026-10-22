@@ -1,0 +1,4 @@
+/* Keyhold's in-page interface is rendered inside a closed shadow root.
+   Its styles are installed as a constructed stylesheet so page CSS cannot
+   leak in or out. This file exists so Chrome can associate a stylesheet with
+   the registered content script without touching the host page. */

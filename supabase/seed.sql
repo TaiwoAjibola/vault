@@ -1,0 +1,2 @@
+-- Keyhold local development seed.
+-- Add local-only fixtures here; encrypted vault rows cannot be seeded without a master password.
