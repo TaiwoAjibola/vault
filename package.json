@@ -23,7 +23,8 @@
     "check": "npm run typecheck && npm run lint && npm run test && npm run build",
     "test:e2e:live": "node tests/e2e/run-live.mjs",
     "test:e2e:live:web": "node tests/e2e/run-live-web.mjs",
-    "test:e2e:live:recovery": "node tests/e2e/run-live-recovery.mjs"
+    "test:e2e:live:recovery": "node tests/e2e/run-live-recovery.mjs",
+    "test:e2e:live:signup": "node tests/e2e/run-live-signup.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
