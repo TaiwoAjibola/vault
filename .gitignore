@@ -41,6 +41,9 @@ supabase/.temp/
 # extension e2e build artifacts
 tests/e2e/.build/
 
+# local login details for the demo account
+.keyhold-login.txt
+
 # agent tooling installed by the skills CLI
 .agents/
 skills-lock.json
